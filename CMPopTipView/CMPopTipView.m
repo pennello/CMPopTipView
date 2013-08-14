@@ -182,8 +182,8 @@
 		alpha = components[3];
 	}
   // chris 081313 toning down these multipliers
-  const double mul1 = 1.02;   // author's value: 1.16
-  const double mul2 = mul1/2; // author's value: 1.08 (hardcoded)
+  const double mul1 = 1.02; // author's value: 1.16
+  const double mul2 = 1.01; // author's value: 1.08
 	CGFloat colorList[] = {
 		//red, green, blue, alpha 
 		red*mul1+colourHL, green*mul1+colourHL, blue*mul1+colourHL, alpha,
