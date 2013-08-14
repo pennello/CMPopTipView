@@ -1,3 +1,7 @@
+Forked from Chris Miles on 081313 to:
+ * migrate to ARC
+ * customize some of the background rendering
+
 CMPopTipView
 ============
 

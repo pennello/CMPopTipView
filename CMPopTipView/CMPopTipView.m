@@ -27,9 +27,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CMPopTipView ()
-@property (nonatomic, retain, readwrite)	id	targetObject;
-@property (nonatomic, retain) NSTimer *autoDismissTimer;
-@property (nonatomic, retain) UIButton *dismissTarget;
+@property (nonatomic, strong, readwrite)	id	targetObject;
+@property (nonatomic, strong) NSTimer *autoDismissTimer;
+@property (nonatomic, strong) UIButton *dismissTarget;
 @end
 
 
@@ -181,11 +181,14 @@
 		blue = components[2];
 		alpha = components[3];
 	}
+  // chris 081313 toning down these multipliers
+  const double mul1 = 1.02;   // author's value: 1.16
+  const double mul2 = mul1/2; // author's value: 1.08 (hardcoded)
 	CGFloat colorList[] = {
 		//red, green, blue, alpha 
-		red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
-		red*1.16+colourHL, green*1.16+colourHL, blue*1.16+colourHL, alpha,
-		red*1.08+colourHL, green*1.08+colourHL, blue*1.08+colourHL, alpha,
+		red*mul1+colourHL, green*mul1+colourHL, blue*mul1+colourHL, alpha,
+		red*mul1+colourHL, green*mul1+colourHL, blue*mul1+colourHL, alpha,
+		red*mul2+colourHL, green*mul2+colourHL, blue*mul2+colourHL, alpha,
 		red     +colourHL, green     +colourHL, blue     +colourHL, alpha,
 		red     +colourHL, green     +colourHL, blue     +colourHL, alpha
 	};
@@ -658,22 +661,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[_autoDismissTimer release];
-	[_dismissTarget release];
-	[backgroundColor release];
-    [borderColor release];
-    [customView release];
-    [title release];
-	[message release];
-	[targetObject release];
-    [titleColor release];
-    [titleFont release];
-	[textColor release];
-	[textFont release];
-	
-    [super dealloc];
-}
 
 
 @end
